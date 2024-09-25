@@ -4,28 +4,26 @@ services:
   backend:
     build: ./apps
     restart: always
-    links:
-      - db
     ports:
       - "3000"
     volumes:
       - app-data:/apps/public/images
 
-  db:
-    image: "mariadb"
-    restart: always
-    links:
-      - phpmyadmin
-    ports:
-      - "3306"
-    environment:
-      - MYSQL_ROOT_PASSWORD=password
-      - MYSQL_DATABASE=training
-      - MYSQL_USER=peserta
-      - MYSQL_PASSWORD=password
-    volumes:
-      - ./apps/database/:/docker-entrypoint-initdb.d
-      - db-data:/var/lib/mysql
+#  db:
+#    image: "mariadb"
+#    restart: always
+#    links:
+#      - phpmyadmin
+#    ports:
+#      - "3306"
+#    environment:
+#      - MYSQL_ROOT_PASSWORD=password
+#      - MYSQL_DATABASE=training
+#      - MYSQL_USER=peserta
+#      - MYSQL_PASSWORD=password
+#    volumes:
+#      - ./apps/database/:/docker-entrypoint-initdb.d
+#      - db-data:/var/lib/mysql
 
   phpmyadmin:
     image: "phpmyadmin"
@@ -33,7 +31,7 @@ services:
     ports:
       - "8043:80"
     environment:
-      - PMA_HOST=db
+      - PMA_HOST=172.23.10.104:3306
 
   web:
     build: ./nginx
