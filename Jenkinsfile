@@ -6,10 +6,11 @@ pipeline {
     // Setup Tools Node
     tools {nodejs "nodejs"}
 
-    // 
     stages {
         stage('Checkout SCM') {
-          git branch: 'main', url: 'https://github.com/khotimillabib/simple-apps.git'
+          steps{
+            git branch: 'main', url: 'https://github.com/khotimillabib/simple-apps.git'
+          }
         }
 
         stage('Build') {
