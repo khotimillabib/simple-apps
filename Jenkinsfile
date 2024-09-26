@@ -9,9 +9,9 @@ pipeline {
     // 
     stages {
         stage('Checkout SCM') {
-           git branch: 'main',  
-           url: 'https://github.com/khotimillabib/simple-apps.git'
+          git branch: 'main', url: 'https://github.com/khotimillabib/simple-apps.git'
         }
+
         stage('Build') {
             steps {
                 sh '''cd apps
@@ -32,7 +32,7 @@ pipeline {
                 -Dsonar.projectKey=simple-apps \
                 -Dsonar.sources=. \
                 -Dsonar.host.url=http://172.23.10.104:9000 \
-                -Dsonar.login=63b607f278b53315bc25257df9b939fe26631fd9'''
+                -Dsonar.login=sqp_63b607f278b53315bc25257df9b939fe26631fd9'''
             }
         }
         stage('Deploy compose') {
