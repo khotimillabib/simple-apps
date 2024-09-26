@@ -30,7 +30,7 @@ pipeline {
             steps {
                 sh '''cd apps
                 sonar-scanner \
-                -Dsonar.projectKey=simpe-apps \
+                -Dsonar.projectKey=simple-apps \
                 -Dsonar.sources=. \
                 -Dsonar.host.url=http://172.23.10.104:9000 \
                 -Dsonar.login=sqp_63b607f278b53315bc25257df9b939fe26631fd9'''
